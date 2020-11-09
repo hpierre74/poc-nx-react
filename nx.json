@@ -34,6 +34,22 @@
     },
     "api-interfaces": {
       "tags": []
+    },
+    "react-static": {
+      "tags": []
+    },
+    "react-static-e2e": {
+      "tags": [],
+      "implicitDependencies": ["react-static"]
+    },
+    "shared-components": {
+      "tags": []
+    },
+    "node-ssr": {
+      "tags": []
+    },
+    "node-express": {
+      "tags": []
     }
   }
 }

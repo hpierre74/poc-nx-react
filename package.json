@@ -32,7 +32,8 @@
     "react-dom": "16.13.1",
     "react-is": "16.13.1",
     "styled-components": "5.1.1",
-    "express": "4.17.1"
+    "express": "4.17.1",
+    "react-router-dom": "5.2.0"
   },
   "devDependencies": {
     "@nrwl/workspace": "10.0.7",
@@ -73,6 +74,7 @@
     "@types/react-is": "16.7.1",
     "babel-plugin-styled-components": "1.10.7",
     "@nrwl/node": "10.0.7",
-    "@types/express": "4.17.0"
+    "@types/express": "4.17.0",
+    "@types/react-router-dom": "5.1.5"
   }
 }

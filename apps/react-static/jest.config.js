@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'react-ssr',
+  name: 'react-static',
   preset: '../../jest.config.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',
@@ -9,5 +9,5 @@ module.exports = {
     ],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/apps/react-ssr',
+  coverageDirectory: '../../coverage/apps/react-static',
 };

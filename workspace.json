@@ -191,6 +191,252 @@
           }
         }
       }
+    },
+    "react-static": {
+      "root": "apps/react-static",
+      "sourceRoot": "apps/react-static/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/react-static",
+            "index": "apps/react-static/src/index.html",
+            "main": "apps/react-static/src/main.tsx",
+            "polyfills": "apps/react-static/src/polyfills.ts",
+            "tsConfig": "apps/react-static/tsconfig.app.json",
+            "assets": [
+              "apps/react-static/src/favicon.ico",
+              "apps/react-static/src/assets"
+            ],
+            "styles": [],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/react-static/src/environments/environment.ts",
+                  "with": "apps/react-static/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "react-static:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "react-static:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/react-static/tsconfig.app.json",
+              "apps/react-static/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/react-static/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/react-static/jest.config.js",
+            "tsConfig": "apps/react-static/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "react-static-e2e": {
+      "root": "apps/react-static-e2e",
+      "sourceRoot": "apps/react-static-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/react-static-e2e/cypress.json",
+            "tsConfig": "apps/react-static-e2e/tsconfig.e2e.json",
+            "devServerTarget": "react-static:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "react-static:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["apps/react-static-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/react-static-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "shared-components": {
+      "root": "libs/shared-components",
+      "sourceRoot": "libs/shared-components/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/shared-components/tsconfig.lib.json",
+              "libs/shared-components/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared-components/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared-components/jest.config.js",
+            "tsConfig": "libs/shared-components/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "node-ssr": {
+      "root": "apps/node-ssr",
+      "sourceRoot": "apps/node-ssr/src",
+      "projectType": "application",
+      "prefix": "node-ssr",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/node-ssr",
+            "main": "apps/node-ssr/src/main.ts",
+            "tsConfig": "apps/node-ssr/tsconfig.app.json",
+            "assets": ["apps/node-ssr/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/node-ssr/src/environments/environment.ts",
+                  "with": "apps/node-ssr/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "node-ssr:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/node-ssr/tsconfig.app.json",
+              "apps/node-ssr/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/node-ssr/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/node-ssr/jest.config.js",
+            "tsConfig": "apps/node-ssr/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "node-express": {
+      "root": "apps/node-express",
+      "sourceRoot": "apps/node-express/src",
+      "projectType": "application",
+      "prefix": "node-express",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/node-express",
+            "main": "apps/node-express/src/main.ts",
+            "tsConfig": "apps/node-express/tsconfig.app.json",
+            "assets": ["apps/node-express/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/node-express/src/environments/environment.ts",
+                  "with": "apps/node-express/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "node-express:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/node-express/tsconfig.app.json",
+              "apps/node-express/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/node-express/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/node-express/jest.config.js",
+            "tsConfig": "apps/node-express/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
