@@ -2,8 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { ReactComponent as Logo } from './logo.svg';
-import star from './star.svg';
+// import { ReactComponent as Logo } from './logo.svg';
+// import star from './star.svg';
 
 // import { Route, Link } from 'react-router-dom';
 
@@ -21,24 +21,14 @@ const StyledApp = styled.div`
     grid-column: span 2;
   }
 
-  .flex {
+  .flex
     display: flex;
-    align-items: center;
+    //align-items: center;
     justify-content: center;
   }
 
   header {
     background-color: #143055;
-    color: white;
-    padding: 5px;
-    border-radius: 3px;
-  }
-
-  main {
-    padding: 0 36px;
-  }
-
-  p {
     text-align: center;
   }
 
@@ -115,10 +105,8 @@ const StyledApp = styled.div`
     color: #24292e;
     display: flex;
     align-items: center;
-    font-size: 12px;
-    padding: 3px 10px;
-    border: 1px solid rgba(27, 31, 35, 0.2);
-    border-radius: 3px;
+    font-size: 12px;    border: 1px solid rgba(27, 31, 35, 0.2);
+
     background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
     margin-left: 4px;
     font-weight: 600;
@@ -136,6 +124,10 @@ const StyledApp = styled.div`
   }
 `;
 
+if (typeof window === 'undefined') {
+  (global as any).window = {};
+}
+
 export const App = () => {
   /*
    * Replace the elements below with your own.
@@ -145,7 +137,7 @@ export const App = () => {
   return (
     <StyledApp>
       <header className="flex">
-        <Logo width="75" height="75" />
+        {/* <Logo width="75" height="75" /> */}
         <h1>Welcome to react-static!</h1>
       </header>
       <main>
@@ -160,7 +152,7 @@ export const App = () => {
             {' '}
             If you like Nx, please give it a star:
             <div className="github-star-badge">
-              <img src={star} className="material-icons" alt="" />
+              {/* <img src={star} className="material-icons" alt="" /> */}
               Star
             </div>
           </a>

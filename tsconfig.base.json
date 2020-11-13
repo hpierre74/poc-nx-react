@@ -16,7 +16,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@poc-nx-react-ssr/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@poc-nx-react-ssr/shared-components": [
         "libs/shared-components/src/index.ts"
       ]

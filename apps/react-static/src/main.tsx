@@ -1,14 +1,15 @@
 import React from 'react';
-import { hydrate } from 'react-dom';
+import { render, hydrate } from 'react-dom';
 
 // import { BrowserRouter } from 'react-router-dom';
+const renderMethod = module.hot ? render : hydrate;
 
 import App from './app/app';
 
-hydrate(
+renderMethod(
   <React.StrictMode>
     {/* <BrowserRouter> */}
-      <App />
+    <App />
     {/* </BrowserRouter> */}
   </React.StrictMode>,
   document.getElementById('root')
